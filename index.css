@@ -1,0 +1,35 @@
+body {
+    background-color: rgb(1,174,251);
+    font-family: 'Montserrat', sans-serif;
+}
+
+.logo {
+    height: 100px;
+    margin-top: -21px;
+    margin-left: 18px;
+}
+.search {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: -40px;
+    border-radius: 8px;
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.search-button {
+    margin-top: -40px;
+    border-radius: 5px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.input-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 200px;
+}
+
+.each-input {
+    margin: 20px;
+    color: white;
+}
