@@ -1,35 +1,27 @@
 body {
-    background-color: rgb(1,174,251);
+    background-color: rgb(1, 174, 251);
     font-family: 'Montserrat', sans-serif;
 }
+.navbar{
+    background-color: rgb(52,65,94);
 
-.logo {
-    height: 100px;
-    margin-top: -21px;
-    margin-left: 18px;
 }
-.search {
-    display: flex;
-    justify-content: flex-end;
-    margin-top: -40px;
-    border-radius: 8px;
-    text-align: center;
-    font-family: 'Montserrat', sans-serif;
-}
-
-.search-button {
-    margin-top: -40px;
-    border-radius: 5px;
-    font-family: 'Montserrat', sans-serif;
-}
-
-.input-container {
-    display: flex;
-    justify-content: center;
-    margin-top: 200px;
-}
-
-.each-input {
-    margin: 20px;
+span{
     color: white;
+}
+.card {
+    margin-top: 80px;
+    height: 520px;
+}
+
+.display-hidden{
+    display: none;   
+}
+
+.contact-person{
+    height: 300px;
+}
+
+.data-people-field{
+    max-height: 400px;
 }

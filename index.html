@@ -3,9 +3,8 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Connecc</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
     <link rel="shortcut icon" href="images/connecc-logo16x16.png" type="image/x-icon">
     <link rel="stylesheet" href="css/bootstrap.min.css">
@@ -13,31 +12,76 @@
 </head>
 
 <body>
-    <img class="logo" src="images/logo.png" alt="connecc-logo">
-    <div class="search">
-        <input class="search" type="text">
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <span class="navbar-brand">Connecc</span>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active" id="nav-home">
+                    <a class="nav-link" href="#">Home
+                        <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+                <li class="nav-item" id="nav-about">
+                    <a class="nav-link" href="#">About</a>
+                </li>
+            </ul>
+            <form class="form-inline mt-2 mt-md-0">
+                <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+                <button type="submit" class="btn btn-outline-info">Search</button>
+            </form>
+        </div>
+    </nav>
 
-        <button id="" class="search-button">Search Contact</button>
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+                <ul class="nav nav-tabs card-header-tabs">
+                    <li class="nav-item">
+                        <a class="nav-link active" id="nav-add-contact-state" href="#">Add Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link show-contact" id="nav-show-contact-state" href="#">Show Contact</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="card-body">
+                <div id="card-content-wrapper">
+                    <h2 class="card-title">Contact</h2>
+                    <form id="form-add">
+                        <div class="form-group">
+                            <label>Name</label>
+                            <input type="text" class="form-control" id="name" placeholder="Contact Name">
+                        </div>
+                        <div class="form-group">
+                            <label>Phone Number</label>
+                            <input type="text" class="form-control" id="phone-number" placeholder="Phone Number">
+                        </div>
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="text" class="form-control" id="email" placeholder="Email">
+                        </div>
+                        <div class="form-group">
+                            <label>Address</label>
+                            <input type="text" class="form-control" id="address" placeholder="Address">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="reset" class="btn btn-primary">Reset</button>                        
+                    </form>
+                </div>
 
+                <div id="data-people-field" class="display-hidden data-people-field">
+                    <!-- PEOPLE's DATA APPEARS HERE-->
+                </div>
+            </div>
+        </div>
     </div>
 
-    <div class="input-container">
-        <form>
-            <div class="each-input">
-                <div>Name</div>
-                <input type="text">
-            </div>
-            <div class="each-input">
-                <div>Number</div>
-                <input type="text">
-            </div>
-            <div class="each-input">
-                <div>Address</div>
-                <input type="text">
-            </div>
-        </form>
-    </div>
 
+    <script src="js/jquery-3.3.1.slim.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/index.js"></script>
 </body>
