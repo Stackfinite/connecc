@@ -115,6 +115,7 @@ navAddContactState.on("click", function () {
   navAddContactState.addClass("active");
   navShowContactState.removeClass("active");
   cardContentWrapper.removeClass("display-hidden");
+  dataPeopleField.addClass("display-hidden");
 });
 
 navShowContactState.on("click", function () {
@@ -133,3 +134,5 @@ submit.on("click", function () {
 keyword.on("input", function () {
   searchContact();
 });
+
+// if(navAddContactState=="")

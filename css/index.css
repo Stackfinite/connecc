@@ -1,27 +1,31 @@
 body {
-  background-color: rgb(1, 174, 251);
-  font-family: "Montserrat", sans-serif;
+    background-color: rgb(1, 174, 251);
+    font-family: "Montserrat", sans-serif;
 }
+
 .navbar {
-  background-color: rgb(52, 65, 94);
+    background-color: rgb(52, 65, 94);
 }
+
 span {
-  color: white;
+    color: white;
 }
+
 .card {
-  margin-top: 80px;
-  height: 520px;
+    margin-top: 80px;
+    height: 520px;
+    opacity: 3;
 }
 
 .display-hidden {
-  display: none;
+    display: none;
 }
 
 .contact-person {
-  height: 300px;
+    height: 300px;
 }
 
 .data-people-field {
-  max-height: 400px;
-  overflow-x: auto;
+    max-height: 400px;
+    overflow-x: auto;
 }
