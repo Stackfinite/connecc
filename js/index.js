@@ -11,10 +11,10 @@ const cardContentWrapper = $("#card-content-wrapper");
 const dataPeopleField = $("#data-people-field");
 
 // Form field variabel
-let name = $("#name");
-let phoneNumber = $("#phone-number");
-let email = $("#email");
-let address = $("#address");
+const name = $("#name");
+const phoneNumber = $("#phone-number");
+const email = $("#email");
+const address = $("#address");
 let keyword = $("#search-keyword");
 const submit = $("#button-submit");
 const reset = $("#button-reset");
