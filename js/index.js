@@ -1,5 +1,4 @@
 //JavaScript to add contact details to localstorage
-
 let contacts = [];
 
 const addLocalStorage = (name,array) => {
