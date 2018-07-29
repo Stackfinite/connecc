@@ -134,5 +134,3 @@ submit.on("click", function () {
 keyword.on("input", function () {
   searchContact();
 });
-
-// if(navAddContactState=="")
