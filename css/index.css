@@ -11,4 +11,17 @@ span{
 }
 .card {
     margin-top: 80px;
+    height: 520px;
+}
+
+.display-hidden{
+    display: none;   
+}
+
+.contact-person{
+    height: 300px;
+}
+
+.data-people-field{
+    max-height: 400px;
 }
