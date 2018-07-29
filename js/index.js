@@ -1,3 +1,4 @@
+'use strict';
 // General variabel
 let people = [];
 
@@ -100,23 +101,23 @@ const searchContact = () => {
 
 //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 // Event listener
-navAbout.on("click", function() {
+navAbout.on("click", function () {
   navHome.removeClass("active");
   navAbout.addClass("active");
 });
 
-navHome.on("click", function() {
+navHome.on("click", function () {
   navHome.addClass("active");
   navAbout.removeClass("active");
 });
 
-navAddContactState.on("click", function() {
+navAddContactState.on("click", function () {
   navAddContactState.addClass("active");
   navShowContactState.removeClass("active");
   cardContentWrapper.removeClass("display-hidden");
 });
 
-navShowContactState.on("click", function() {
+navShowContactState.on("click", function () {
   navAddContactState.removeClass("active");
   navShowContactState.addClass("active");
   cardContentWrapper.addClass("display-hidden");
@@ -124,11 +125,11 @@ navShowContactState.on("click", function() {
   showData();
 });
 
-submit.on("click", function() {
-  addLocalStorage();
-  clearAll();
-});
+submit.on("click", function () {
+    addLocalStorage();
+    clearAll();
+  });
 
-keyword.on("input", function() {
+keyword.on("input", function () {
   searchContact();
 });
