@@ -58,7 +58,7 @@ const showData = () => {
     <div id="contact-${index}" class="card text-white bg-info contact-person" style="max-width: 18rem;">
         <div class="card-header">${contact.name}</div>
         <div class="card-body">
-            <h4 class="card-title">Personal Information</h4>
+            <h5 class="card-title">Personal Information</h5>
             <p class="card-text"><b>Phone Number</b>: ${contact.phoneNumber}</p>
             <p class="card-text"><b>Email</b>: ${contact.email}</p>
             <p class="card-text"><b>Address</b>: ${contact.address}</p>

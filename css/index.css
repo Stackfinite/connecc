@@ -23,4 +23,5 @@ span {
 
 .data-people-field {
   max-height: 400px;
+  overflow-x: auto;
 }
