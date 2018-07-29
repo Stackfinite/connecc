@@ -15,6 +15,7 @@ let name = $("#name");
 let phoneNumber = $("#phone-number");
 let email = $("#email");
 let address = $("#address");
+let keyword = $("#search-keyword");
 const submit = $("#button-submit");
 const reset = $("#button-reset");
 
@@ -68,6 +69,35 @@ const showData = () => {
   });
 };
 
+const searchContact = () => {
+  let keyword = document.getElementById("search-keyword").value;
+  let keywordLowercase = keyword.toLowerCase();
+  let people = getLocalStorage();
+  dataPeopleField[0].innerHTML = "";
+
+  people.map((contact, index) => {
+    if (
+      contact.name.toLowerCase().indexOf(keywordLowercase) !== -1 ||
+      contact.phoneNumber.toLowerCase().indexOf(keywordLowercase) !== -1 ||
+      contact.email.toLowerCase().indexOf(keywordLowercase) !== -1 ||
+      contact.address.toLowerCase().indexOf(keywordLowercase) !== -1
+    ) {
+      const card = `
+    <div id="contact-${index}" class="card text-white bg-info contact-person" style="max-width: 18rem;">
+        <div class="card-header">${contact.name}</div>
+        <div class="card-body">
+            <h4 class="card-title">Personal Information</h4>
+            <p class="card-text"><b>Phone Number</b>: ${contact.phoneNumber}</p>
+            <p class="card-text"><b>Email</b>: ${contact.email}</p>
+            <p class="card-text"><b>Address</b>: ${contact.address}</p>
+    </div>
+    </div>
+    `;
+      return dataPeopleField.append(card);
+    }
+  });
+};
+
 //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 // Event listener
 navAbout.on("click", function() {
@@ -97,4 +127,8 @@ navShowContactState.on("click", function() {
 submit.on("click", function() {
   addLocalStorage();
   clearAll();
+});
+
+keyword.on("input", function() {
+  searchContact();
 });
