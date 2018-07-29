@@ -1,4 +1,14 @@
 body {
-    background-color: rgb(1,174,251);
+    background-color: rgb(1, 174, 251);
     font-family: 'Montserrat', sans-serif;
+}
+.navbar{
+    background-color: rgb(52,65,94);
+
+}
+span{
+    color: white;
+}
+.card {
+    margin-top: 80px;
 }
