@@ -18,23 +18,7 @@ let address = $("#address");
 const submit = $("#button-submit");
 const reset = $("#button-reset");
 
-//@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-// Function Definition
-const cardTemplate = (name, phoneNumber, email, address) => {
-  const card = `
-    <div class="card text-white bg-info contact-person" style="max-width: 18rem;">
-        <div class="card-header">${name}</div>
-        <div class="card-body">
-            <h4 class="card-title">Personal Information</h4>
-            <p class="card-text"><b>Phone Number</b>: ${phoneNumber}</p>
-            <p class="card-text"><b>Email</b>: ${email}</p>
-            <p class="card-text"><b>Address</b>: ${address}</p>
-    </div>
-    </div>
-    `;
-  return dataPeopleField.append(card);
-};
-
+// Add data to localstorage
 const addLocalStorage = () => {
   let newData = {
     name: document.getElementById("name").value,
@@ -47,13 +31,15 @@ const addLocalStorage = () => {
   window.localStorage.setItem("contacts", JSON.stringify(people));
 };
 
+// Get data from local storage
 const getLocalStorage = () => {
   const getData = window.localStorage.getItem("contacts");
 
-  if (getData) return (people = JSON.parse(getData));
+  if (getData) return JSON.parse(getData);
   else return [];
 };
 
+// Clear all textbox
 const clearAll = () => {
   name[0].value = "";
   phoneNumber[0].value = "";
@@ -61,22 +47,25 @@ const clearAll = () => {
   address[0].value = "";
 };
 
+// Show data retrieved from localstorage
 const showData = () => {
-  // const dataPeople = get()
-  // dataPeopleField.html('')
+  let people = getLocalStorage();
+  dataPeopleField[0].innerHTML = "";
 
-  // dataPeople.forEach(person => {
-  //     let personInfo = ''
-  //     for(let key in person){
-
-  //     }
-  // });
-  return cardTemplate(
-    "Arie Brainware",
-    "08123456",
-    "nobody@nowhere.net",
-    "Nowhere"
-  );
+  people.map((contact, index) => {
+    const card = `
+    <div id="contact-${index}" class="card text-white bg-info contact-person" style="max-width: 18rem;">
+        <div class="card-header">${contact.name}</div>
+        <div class="card-body">
+            <h4 class="card-title">Personal Information</h4>
+            <p class="card-text"><b>Phone Number</b>: ${contact.phoneNumber}</p>
+            <p class="card-text"><b>Email</b>: ${contact.email}</p>
+            <p class="card-text"><b>Address</b>: ${contact.address}</p>
+    </div>
+    </div>
+    `;
+    return dataPeopleField.append(card);
+  });
 };
 
 //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
