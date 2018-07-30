@@ -1,6 +1,6 @@
 'use strict';
 // General variabel
-let people = [];
+
 
 // Component variabel
 const formAdd = $("#form-add");
@@ -42,7 +42,6 @@ const addLocalStorage = () => {
 
   people.push(newData);
   window.localStorage.setItem("contacts", JSON.stringify(people));
-  successMessage();
 
 };
 
@@ -50,9 +49,15 @@ const addLocalStorage = () => {
 const getLocalStorage = () => {
   const getData = window.localStorage.getItem("contacts");
 
-  if (getData) return JSON.parse(getData);
-  else return [];
-};
+  if (getData) {
+    return JSON.parse(getData);
+  } else {
+
+    return []
+
+  };
+}
+let people = []
 
 // Clear all textbox
 const clearAll = () => {
@@ -69,8 +74,11 @@ const showData = () => {
 
   people.map((contact, index) => {
     const card = `
+    
     <div id="contact-${index}" class="card text-white bg-info contact-person" style="max-width: 18rem;">
+      <a href="#" id="contact-${index}">delete</a>
         <div class="card-header">${contact.name}</div>
+        
         <div class="card-body">
             <h5 class="card-title">Personal Information</h5>
             <p class="card-text"><b>Phone Number</b>: ${contact.phoneNumber}</p>
@@ -122,6 +130,7 @@ const validate = () => {
     )
   } else {
     addLocalStorage();
+    successMessage();
     clearAll();
   }
 
@@ -129,37 +138,40 @@ const validate = () => {
 
 //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 // Event listener
+window.addEventListener('load', function () {
 
-navAbout.on("click", function () {
-  navHome.removeClass("active");
-  navAbout.addClass("active");
-});
+  navAbout.on("click", function () {
+    navHome.removeClass("active");
+    navAbout.addClass("active");
+  });
 
-navHome.on("click", function () {
-  navHome.addClass("active");
-  navAbout.removeClass("active");
-});
+  navHome.on("click", function () {
+    navHome.addClass("active");
+    navAbout.removeClass("active");
+  });
 
-navAddContactState.on("click", function () {
-  navAddContactState.addClass("active");
-  navShowContactState.removeClass("active");
-  cardContentWrapper.removeClass("display-hidden");
-  dataPeopleField.addClass("display-hidden");
-});
+  navAddContactState.on("click", function () {
+    navAddContactState.addClass("active");
+    navShowContactState.removeClass("active");
+    cardContentWrapper.removeClass("display-hidden");
+    dataPeopleField.addClass("display-hidden");
 
-navShowContactState.on("click", function () {
-  navAddContactState.removeClass("active");
-  navShowContactState.addClass("active");
-  cardContentWrapper.addClass("display-hidden");
-  dataPeopleField.removeClass("display-hidden");
-  showData();
-});
+  });
 
-submit.on("click", function () {
-  validate();
+  navShowContactState.on("click", function () {
+    navAddContactState.removeClass("active");
+    navShowContactState.addClass("active");
+    cardContentWrapper.addClass("display-hidden");
+    dataPeopleField.removeClass("display-hidden");
+    showData();
+  });
 
-});
+  submit.on("click", function () {
+    event.preventDefault();
+    validate();
+  });
 
-keyword.on("input", function () {
-  searchContact();
-});
+  keyword.on("input", function () {
+    searchContact();
+  });
+})
