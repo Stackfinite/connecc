@@ -115,6 +115,7 @@ const searchContact = () => {
 // Validate if field empty
 const validate = () => {
   if (name.val() == "" || phoneNumber.val() == "" || address.val() == "" || email.val() == "") {
+    event.preventDefault()
     swal(
       'Error!',
       'Please fill every field!',
