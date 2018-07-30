@@ -1,6 +1,6 @@
 'use strict';
 // General variabel
-let people = [];
+
 
 // Component variabel
 const formAdd = $("#form-add");
@@ -42,7 +42,6 @@ const addLocalStorage = () => {
 
   people.push(newData);
   window.localStorage.setItem("contacts", JSON.stringify(people));
-  successMessage();
 
 };
 
@@ -50,9 +49,15 @@ const addLocalStorage = () => {
 const getLocalStorage = () => {
   const getData = window.localStorage.getItem("contacts");
 
-  if (getData) return JSON.parse(getData);
-  else return [];
-};
+  if (getData) {
+    return JSON.parse(getData);
+  } else {
+
+    return []
+
+  };
+}
+let people = []
 
 // Clear all textbox
 const clearAll = () => {
@@ -115,7 +120,6 @@ const searchContact = () => {
 // Validate if field empty
 const validate = () => {
   if (name.val() == "" || phoneNumber.val() == "" || address.val() == "" || email.val() == "") {
-    event.preventDefault()
     swal(
       'Error!',
       'Please fill every field!',
@@ -123,6 +127,7 @@ const validate = () => {
     )
   } else {
     addLocalStorage();
+    successMessage();
     clearAll();
   }
 
@@ -130,37 +135,40 @@ const validate = () => {
 
 //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 // Event listener
+window.addEventListener('load', function () {
 
-navAbout.on("click", function () {
-  navHome.removeClass("active");
-  navAbout.addClass("active");
-});
+  navAbout.on("click", function () {
+    navHome.removeClass("active");
+    navAbout.addClass("active");
+  });
 
-navHome.on("click", function () {
-  navHome.addClass("active");
-  navAbout.removeClass("active");
-});
+  navHome.on("click", function () {
+    navHome.addClass("active");
+    navAbout.removeClass("active");
+  });
 
-navAddContactState.on("click", function () {
-  navAddContactState.addClass("active");
-  navShowContactState.removeClass("active");
-  cardContentWrapper.removeClass("display-hidden");
-  dataPeopleField.addClass("display-hidden");
-});
+  navAddContactState.on("click", function () {
+    navAddContactState.addClass("active");
+    navShowContactState.removeClass("active");
+    cardContentWrapper.removeClass("display-hidden");
+    dataPeopleField.addClass("display-hidden");
 
-navShowContactState.on("click", function () {
-  navAddContactState.removeClass("active");
-  navShowContactState.addClass("active");
-  cardContentWrapper.addClass("display-hidden");
-  dataPeopleField.removeClass("display-hidden");
-  showData();
-});
+  });
 
-submit.on("click", function () {
-  validate();
+  navShowContactState.on("click", function () {
+    navAddContactState.removeClass("active");
+    navShowContactState.addClass("active");
+    cardContentWrapper.addClass("display-hidden");
+    dataPeopleField.removeClass("display-hidden");
+    showData();
+  });
 
-});
+  submit.on("click", function () {
+    event.preventDefault();
+    validate();
+  });
 
-keyword.on("input", function () {
-  searchContact();
-});
+  keyword.on("input", function () {
+    searchContact();
+  });
+})
