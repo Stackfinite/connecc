@@ -74,8 +74,11 @@ const showData = () => {
 
   people.map((contact, index) => {
     const card = `
+    
     <div id="contact-${index}" class="card text-white bg-info contact-person" style="max-width: 18rem;">
+      <a href="#" id="contact-${index}">delete</a>
         <div class="card-header">${contact.name}</div>
+        
         <div class="card-body">
             <h5 class="card-title">Personal Information</h5>
             <p class="card-text"><b>Phone Number</b>: ${contact.phoneNumber}</p>
