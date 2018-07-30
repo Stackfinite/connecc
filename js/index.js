@@ -76,7 +76,6 @@ const showData = () => {
     const card = `
     
     <div id="contact-${index}" class="card text-white bg-info contact-person" style="max-width: 18rem;">
-      <a href="#" id="contact-${index}">delete</a>
         <div class="card-header">${contact.name}</div>
         
         <div class="card-body">
