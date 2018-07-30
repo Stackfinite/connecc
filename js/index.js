@@ -42,20 +42,14 @@ const addLocalStorage = () => {
 
   people.push(newData);
   window.localStorage.setItem("contacts", JSON.stringify(people));
-
 };
 
 // Get data from local storage
 const getLocalStorage = () => {
   const getData = window.localStorage.getItem("contacts");
 
-  if (getData) {
-    return JSON.parse(getData);
-  } else {
-
-    return []
-
-  };
+  if (getData)return JSON.parse(getData);
+  else return [];
 }
 let people = []
 
