@@ -20,17 +20,30 @@ let keyword = $("#search-keyword");
 const submit = $("#button-submit");
 const reset = $("#button-reset");
 
+//@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+// Function definition
+
+const successMessage = () => {
+  swal(
+    'Success!',
+    'Contact successfully saved!',
+    'success'
+  )
+}
+
 // Add data to localstorage
 const addLocalStorage = () => {
   let newData = {
-    name: document.getElementById("name").value,
-    phoneNumber: document.getElementById("phone-number").value,
-    email: document.getElementById("email").value,
-    address: document.getElementById("address").value
+    name: $('#name').val(),
+    phoneNumber: $('#phone-number').val(),
+    email: $('#email').val(),
+    address: $('#address').val()
   };
 
   people.push(newData);
   window.localStorage.setItem("contacts", JSON.stringify(people));
+  successMessage();
+
 };
 
 // Get data from local storage
@@ -99,8 +112,24 @@ const searchContact = () => {
   });
 };
 
+// Validate if field empty
+const validate = () => {
+  if (name.val() == "" || phoneNumber.val() == "" || address.val() == "" || email.val() == "") {
+    swal(
+      'Error!',
+      'Please fill every field!',
+      'error'
+    )
+  } else {
+    addLocalStorage();
+    clearAll();
+  }
+
+}
+
 //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 // Event listener
+
 navAbout.on("click", function () {
   navHome.removeClass("active");
   navAbout.addClass("active");
@@ -127,9 +156,9 @@ navShowContactState.on("click", function () {
 });
 
 submit.on("click", function () {
-    addLocalStorage();
-    clearAll();
-  });
+  validate();
+
+});
 
 keyword.on("input", function () {
   searchContact();
