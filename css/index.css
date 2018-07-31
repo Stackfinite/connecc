@@ -28,3 +28,19 @@ span {
     max-height: 400px;
     overflow-x: auto;
 }
+
+.data-people-field::-webkit-scrollbar {
+    width: 10px;
+}
+
+.data-people-field::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+.data-people-field::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+.data-people-field::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
