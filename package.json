@@ -1,0 +1,38 @@
+{
+  "name": "connecc",
+  "version": "0.3.0",
+  "description": "![Logo](images/logo.png)",
+  "main": "index.js",
+  "scripts": {
+    "test": "nodemon test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ariebrainware/connecc.git"
+  },
+  "keywords": [
+    "contact",
+    "web",
+    "application",
+    "api",
+    "localstorage",
+    "javascript",
+    "html",
+    "css",
+    "bootstrap4",
+    "json-api",
+    "nodejs"
+  ],
+  "author": "ariebrainware <publicu001@gmail.com>",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/ariebrainware/connecc/issues"
+  },
+  "homepage": "https://github.com/ariebrainware/connecc#readme",
+  "devDependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3",
+    "node-fetch": "^2.2.0",
+    "nodemon": "^1.18.3"
+  }
+}
