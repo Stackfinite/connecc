@@ -4,7 +4,7 @@
   "description": "![Logo](images/logo.png)",
   "main": "index.js",
   "scripts": {
-    "test": "nodemon test"
+    "start": "nodemon ./lib/server/index.js"
   },
   "repository": {
     "type": "git",
@@ -29,10 +29,14 @@
     "url": "https://github.com/ariebrainware/connecc/issues"
   },
   "homepage": "https://github.com/ariebrainware/connecc#readme",
-  "devDependencies": {
+  "devDependencies": {},
+  "dependencies": {
     "body-parser": "^1.18.3",
     "express": "^4.16.3",
     "node-fetch": "^2.2.0",
     "nodemon": "^1.18.3"
+  },
+  "directories": {
+    "lib": "lib"
   }
 }
