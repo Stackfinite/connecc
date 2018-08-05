@@ -108,7 +108,9 @@ const searchContact = () => {
 };
 // -------------------------------------------------------------
 // API Section
-
+const saveWithAPI = () =>{
+	contact.addFromDOM.greeting()
+}
 
 // Validate if field empty
 const validate = () => {
@@ -117,6 +119,7 @@ const validate = () => {
 	} else {
 		addLocalStorage();
 		successMessage();
+		saveWithAPI()
 		clearAll();
 	}
 };
