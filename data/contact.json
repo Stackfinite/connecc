@@ -1,0 +1,12 @@
+{
+  "counter": 1,
+  "contacts": [
+    {
+      "id": 1,
+      "name": "Jeremy Daniels",
+      "phoneNumber": "+618-40-7087220",
+      "email": "labihowa@mailinator.com",
+      "address": "Quibusdam perspiciatis aliquid reprehen"
+    }
+  ]
+}
