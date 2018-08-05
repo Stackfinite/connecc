@@ -106,6 +106,9 @@ const searchContact = () => {
 		}
 	});
 };
+// -------------------------------------------------------------
+// API Section
+
 
 // Validate if field empty
 const validate = () => {
@@ -120,25 +123,25 @@ const validate = () => {
 
 // @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 // Event listener
-window.addEventListener("load", function() {
-	navAbout.on("click", function() {
+window.addEventListener("load", function () {
+	navAbout.on("click", function () {
 		navHome.removeClass("active");
 		navAbout.addClass("active");
 	});
 
-	navHome.on("click", function() {
+	navHome.on("click", function () {
 		navHome.addClass("active");
 		navAbout.removeClass("active");
 	});
 
-	navAddContactState.on("click", function() {
+	navAddContactState.on("click", function () {
 		navAddContactState.addClass("active");
 		navShowContactState.removeClass("active");
 		cardContentWrapper.removeClass("display-hidden");
 		dataPeopleField.addClass("display-hidden");
 	});
 
-	navShowContactState.on("click", function() {
+	navShowContactState.on("click", function () {
 		navAddContactState.removeClass("active");
 		navShowContactState.addClass("active");
 		cardContentWrapper.addClass("display-hidden");
@@ -146,17 +149,17 @@ window.addEventListener("load", function() {
 		showData();
 	});
 
-	formAdd.on("submit", function() {
+	formAdd.on("submit", function () {
 		event.preventDefault();
 		validate();
 	});
 
-	searchForm.on("submit", function(event) {
+	searchForm.on("submit", function (event) {
 		event.preventDefault();
 		searchContact();
 	});
 
-	searchKeyword.on("input", function() {
+	searchKeyword.on("input", function () {
 		searchContact();
 	});
 });
