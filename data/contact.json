@@ -1,0 +1,40 @@
+{
+  "counter": 5,
+  "contacts": [
+    {
+      "id": 1,
+      "name": "Jeremy Daniels",
+      "phoneNumber": "+618-40-7087220",
+      "email": "labihowa@mailinator.com",
+      "address": "Quibusdam perspiciatis aliquid reprehen"
+    },
+    {
+      "id": 1,
+      "name": "Delilah Stanley",
+      "phoneNumber": "+243-50-3644652",
+      "email": "cewolasu@mailinator.com",
+      "address": "Incidunt explicabo Aperiam accusamus q"
+    },
+    {
+      "id": 2,
+      "name": "Avye Mckenzie",
+      "phoneNumber": "+822-60-7853932",
+      "email": "lelyvaz@mailinator.net",
+      "address": "Impedit ipsa veniam neque et officia "
+    },
+    {
+      "id": 3,
+      "name": "Paula Wood",
+      "phoneNumber": "+958-10-8478823",
+      "email": "wynyke@mailinator.net",
+      "address": "Quisquam est non in sit"
+    },
+    {
+      "id": 4,
+      "name": "Robin Campbell",
+      "phoneNumber": "+656-39-2646087",
+      "email": "hewuhowad@mailinator.net",
+      "address": "Ea eaque impedit adipisicing ullamco at"
+    }
+  ]
+}
