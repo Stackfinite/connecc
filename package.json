@@ -1,0 +1,26 @@
+{
+  "name": "connecc",
+  "version": "0.1.0",
+  "description": "Connecc",
+  "main": "index.html",
+  "scripts": {
+    "start": "live-server",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/glintsacademy-1/connecc.git"
+  },
+  "keywords": [
+    "connecc"
+  ],
+  "author": "Stackfinite",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/glintsacademy-1/connecc/issues"
+  },
+  "homepage": "https://github.com/glintsacademy-1/connecc#readme",
+  "devDependencies": {
+    "live-server": "^1.2.0"
+  }
+}
