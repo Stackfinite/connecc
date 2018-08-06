@@ -26,15 +26,25 @@ const successMessage = () => {
 
 // Add data to JSON file
 const addContact = () => {
-  let newData = {
+  let contacts = {
     name: $("#name").val(),
     phoneNumber: $("#phone-number").val(),
     email: $("#email").val(),
     address: $("#address").val()
   };
 
-  people.push(newData);
-  window.localStorage.setItem("contacts", JSON.stringify(people));
+  fetch("http://localhost:3000/contacts", {
+    method: "post",
+    mode: "cors",
+    cache: "no-cache",
+    credentials: "same-origin",
+    headers: {
+      "Content-Type": "application/json; charset=utf-8"
+    },
+    redirect: "follow",
+    referrer: "no-referrer",
+    body: JSON.stringify(contacts)
+  });
 };
 
 // Clear all textbox
@@ -65,7 +75,14 @@ const createTemplate = (contact, index) => {
 
 // Show data retrieved from JSON file
 const showContact = () => {
-  fetch("http://localhost:3000")
+  fetch("http://localhost:3000/contacts", {
+    method: "get",
+    mode: "cors",
+    cache: "no-cache",
+    credentials: "same-origin",
+    redirect: "follow",
+    referrer: "no-referrer"
+  })
     .then(response => response.json())
     .then(data => {
       dataPeopleField.html("");
@@ -82,21 +99,32 @@ const showContact = () => {
 const searchContact = () => {
   const keyword = $("#search-keyword").val();
   const keywordLowercase = keyword.toLowerCase();
-  const people = getLocalStorage();
-  dataPeopleField.html("");
 
-  people.forEach((contact, index) => {
-    const found =
-      contact.name.toLowerCase().indexOf(keywordLowercase) !== -1 ||
-      contact.phoneNumber.toLowerCase().indexOf(keywordLowercase) !== -1 ||
-      contact.email.toLowerCase().indexOf(keywordLowercase) !== -1 ||
-      contact.address.toLowerCase().indexOf(keywordLowercase) !== -1;
+  fetch(`http://localhost:3000/contacts/search/`, {
+    method: "get",
+    mode: "cors",
+    cache: "no-cache",
+    credentials: "same-origin",
+    redirect: "follow",
+    referrer: "no-referrer"
+  })
+    .then(response => response.json())
+    .then(data => {
+      dataPeopleField.html("");
 
-    if (found) {
-      const card = createTemplate(contact, index);
-      dataPeopleField.append(card);
-    }
-  });
+      data.contacts.forEach((contact, index) => {
+        const found =
+          contact.name.toLowerCase().indexOf(keywordLowercase) !== -1 ||
+          contact.phoneNumber.toLowerCase().indexOf(keywordLowercase) !== -1 ||
+          contact.email.toLowerCase().indexOf(keywordLowercase) !== -1 ||
+          contact.address.toLowerCase().indexOf(keywordLowercase) !== -1;
+
+        if (found) {
+          const card = createTemplate(contact, index);
+          dataPeopleField.append(card);
+        }
+      });
+    });
 };
 
 // Validate if field empty
