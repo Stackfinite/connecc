@@ -13,7 +13,7 @@ This is a documentation of CONNECC, the app that can make your life easier by or
 - Manage Email
 - Manage Address
 
-## Tech Stacks
+### Tech Stacks
 - JavaScript
 - NodeJS
 - ExpressJS
@@ -21,4 +21,3 @@ This is a documentation of CONNECC, the app that can make your life easier by or
 
 
 [Click here](https://stackfinite.github.io/connecc) for Live Preview.
-<- 
