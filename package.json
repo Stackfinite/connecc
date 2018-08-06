@@ -1,43 +1,26 @@
 {
   "name": "connecc",
-  "version": "0.3.0",
-  "description": "![Logo](images/logo.png)",
-  "main": "index.js",
+  "version": "0.1.0",
+  "description": "Connecc",
+  "main": "index.html",
   "scripts": {
-    "start": "nodemon ./lib/server/index.js"
+    "start": "live-server",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ariebrainware/connecc.git"
+    "url": "git+https://github.com/glintsacademy-1/connecc.git"
   },
   "keywords": [
-    "contact",
-    "web",
-    "application",
-    "api",
-    "localstorage",
-    "javascript",
-    "html",
-    "css",
-    "bootstrap4",
-    "json-api",
-    "nodejs"
+    "connecc"
   ],
-  "author": "ariebrainware <publicu001@gmail.com>",
-  "license": "GPL-3.0",
+  "author": "Stackfinite",
+  "license": "MIT",
   "bugs": {
-    "url": "https://github.com/ariebrainware/connecc/issues"
+    "url": "https://github.com/glintsacademy-1/connecc/issues"
   },
-  "homepage": "https://github.com/ariebrainware/connecc#readme",
-  "devDependencies": {},
-  "dependencies": {
-    "body-parser": "^1.18.3",
-    "cors": "^2.8.4",
-    "express": "^4.16.3",
-    "node-fetch": "^2.2.0",
-    "nodemon": "^1.18.3"
-  },
-  "directories": {
-    "lib": "lib"
+  "homepage": "https://github.com/glintsacademy-1/connecc#readme",
+  "devDependencies": {
+    "live-server": "^1.2.0"
   }
 }
