@@ -1,3 +1,5 @@
+'use strict';
+
 // Component/DOM variable
 const formAdd = $('#form-add');
 const navHome = $('#nav-home');
@@ -58,7 +60,6 @@ const clearAll = () => {
   address[0].value = '';
 };
 
-// Template for contact display
 const createTemplate = (contact, index) => {
   return `
   <div class="col-12 col-md-4">
@@ -90,7 +91,7 @@ const showContact = () => {
     .then(data => {
       dataPeopleField.html('');
 
-      data.contacts.forEach((contact, index) => {
+      people.forEach((contact, index) => {
         const card = createTemplate(contact, index);
 
         dataPeopleField.append(card);
@@ -98,7 +99,6 @@ const showContact = () => {
     });
 };
 
-// Search contact stored in JSON file
 const searchContact = () => {
   const keyword = $('#search-keyword').val();
   const keywordLowercase = keyword.toLowerCase();
