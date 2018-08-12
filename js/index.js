@@ -20,7 +20,7 @@ const searchForm = $('#search-form');
 const searchKeyword = $('#search-keyword');
 
 // TODO: Use API_URL in each fetch function
-const API_URL = 'http://localhost:3000/contacts';
+const API_URL = 'https://connecc-api.herokuapp.com/contacts/';
 
 // @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 // Function definition
@@ -29,7 +29,7 @@ const successMessage = () => {
   swal('Success!', 'Contact successfully saved!', 'success');
 };
 
-// Add data to JSON file
+// Add contact to database
 const addContact = () => {
   let contacts = {
     name: $('#name').val(),
@@ -38,7 +38,7 @@ const addContact = () => {
     address: $('#address').val()
   };
 
-  fetch('http://localhost:3000/contacts', {
+  fetch(API_URL, {
     method: 'post',
     mode: 'cors',
     cache: 'no-cache',
@@ -68,7 +68,7 @@ const createTemplate = (contact, index) => {
         <h5 class="card-title">${contact.name}</h5>          
       </div>
       <div class="card-body">
-        <p class="card-text"><b>Phone Number</b>: ${contact.phoneNumber}</p>
+        <p class="card-text"><b>Phone Number</b>: ${contact.phone_number}</p>
         <p class="card-text"><b>Email</b>: ${contact.email}</p>
         <p class="card-text"><b>Address</b>: ${contact.address}</p>
       </div>
@@ -77,7 +77,7 @@ const createTemplate = (contact, index) => {
   `;
 };
 
-// Show data retrieved from JSON file
+// Get data from database
 const showContact = () => {
   fetch(API_URL, {
     method: 'GET',
@@ -91,7 +91,7 @@ const showContact = () => {
     .then(data => {
       dataPeopleField.html('');
 
-      people.forEach((contact, index) => {
+      data.contact.forEach((contact, index) => {
         const card = createTemplate(contact, index);
 
         dataPeopleField.append(card);
@@ -103,7 +103,7 @@ const searchContact = () => {
   const keyword = $('#search-keyword').val();
   const keywordLowercase = keyword.toLowerCase();
 
-  fetch(`http://localhost:3000/contacts/search?q=${keyword}`, {
+  fetch(`https://connecc-api.herokuapp.com/contacts/`, {
     method: 'GET',
     mode: 'cors',
     cache: 'no-cache',
@@ -113,16 +113,16 @@ const searchContact = () => {
   })
     .then(response => response.json())
     .then(data => {
-      dataPeopleField.html('');
-
-      data.contacts.forEach((contact, index) => {
+      data.contact.forEach((contact, index) => {
         const found =
           contact.name.toLowerCase().indexOf(keywordLowercase) !== -1 ||
-          contact.phoneNumber.toLowerCase().indexOf(keywordLowercase) !== -1 ||
+          contact.phone_number.toLowerCase().indexOf(keywordLowercase) !== -1 ||
           contact.email.toLowerCase().indexOf(keywordLowercase) !== -1 ||
           contact.address.toLowerCase().indexOf(keywordLowercase) !== -1;
 
         if (found) {
+          dataPeopleField.html('');
+
           const card = createTemplate(contact, index);
           dataPeopleField.append(card);
         }
