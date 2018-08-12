@@ -1,0 +1,21 @@
+{
+  "name": "connecc",
+  "description": "Connecc",
+  "main": "index.html",
+  "authors": [
+    "Stackfinite"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "connecc"
+  ],
+  "homepage": "https://github.com/glintsacademy-1/connecc",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
