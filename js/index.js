@@ -63,7 +63,7 @@ const clearAll = () => {
   address[0].value = '';
 };
 
-const createTemplate = (contact, index, id) => {
+const createTemplate = (contact, id) => {
   return `
   <div class="col-12 col-md-4">
     <div id="contact-${id}" class="card text-white bg-info contact-person" style="max-width: 18rem;">
@@ -103,7 +103,7 @@ const showContact = () => {
       data.data.contact.forEach((contact, index) => {
         const id = data.data.contact[index].id;
 
-        const card = createTemplate(contact, index, id);
+        const card = createTemplate(contact, id);
         dataPeopleField.append(card);
       });
 
@@ -117,26 +117,22 @@ const searchContact = () => {
 
   loadingScreen.show();
 
-  fetch(
-    `https://connecc-api.herokuapp.com/contacts/search/?q=${keywordLowercase}`,
-    {
-      method: 'GET',
-      mode: 'cors',
-      cache: 'no-cache',
-      credentials: 'same-origin',
-      redirect: 'follow',
-      referrer: 'no-referrer'
-    }
-  )
+  fetch(`${API_URL}search/?q=${keywordLowercase}`, {
+    method: 'GET',
+    mode: 'cors',
+    cache: 'no-cache',
+    credentials: 'same-origin',
+    redirect: 'follow',
+    referrer: 'no-referrer'
+  })
     .then(response => response.json())
     .then(data => {
-      console.log(data);
       dataPeopleField.html('');
 
       data.contact.forEach((contact, index) => {
         const id = data.contact[index].id;
 
-        const card = createTemplate(contact, index, id);
+        const card = createTemplate(contact, id);
         dataPeopleField.append(card);
       });
       loadingScreen.hide();
@@ -146,36 +142,16 @@ const searchContact = () => {
 const deleteContact = id => {
   loadingScreen.show();
 
-  fetch(`https://connecc-api.herokuapp.com/contacts/${id}`, {
+  fetch(`${API_URL}${id}`, {
     method: 'DELETE',
     mode: 'cors',
     cache: 'no-cache',
     credentials: 'same-origin',
     redirect: 'follow',
     referrer: 'no-referrer'
-  }).then(
-    fetch(API_URL, {
-      method: 'GET',
-      mode: 'cors',
-      cache: 'no-cache',
-      credentials: 'same-origin',
-      redirect: 'follow',
-      referrer: 'no-referrer'
-    })
-      .then(response => response.json())
-      .then(data => {
-        dataPeopleField.html('');
-
-        data.data.contact.forEach((contact, index) => {
-          const id = data.data.contact[index].id;
-
-          const card = createTemplate(contact, index, id);
-          dataPeopleField.append(card);
-        });
-
-        loadingScreen.hide();
-      })
-  );
+  })
+    .then(response => response.json())
+    .then(data => showContact());
 };
 
 // Validate if field empty
