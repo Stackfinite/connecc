@@ -1,3 +1,5 @@
+'use strict';
+
 // Component/DOM variable
 const formAdd = $('#form-add');
 const navHome = $('#nav-home');
@@ -16,9 +18,12 @@ const submit = $('#button-submit');
 const reset = $('#button-reset');
 const searchForm = $('#search-form');
 const searchKeyword = $('#search-keyword');
+const buttonSearch = $('#button-search');
+const buttonClose = $('#button-close');
+const loadingScreen = $('#loading');
 
 // TODO: Use API_URL in each fetch function
-const API_URL = 'http://localhost:3000/contacts';
+const API_URL = 'https://connecc-api.herokuapp.com/contacts/';
 
 // @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 // Function definition
@@ -27,7 +32,7 @@ const successMessage = () => {
   swal('Success!', 'Contact successfully saved!', 'success');
 };
 
-// Add data to JSON file
+// Add contact to database
 const addContact = () => {
   let contacts = {
     name: $('#name').val(),
@@ -36,7 +41,7 @@ const addContact = () => {
     address: $('#address').val()
   };
 
-  fetch('http://localhost:3000/contacts', {
+  fetch(API_URL, {
     method: 'post',
     mode: 'cors',
     cache: 'no-cache',
@@ -58,16 +63,19 @@ const clearAll = () => {
   address[0].value = '';
 };
 
-// Template for contact display
-const createTemplate = (contact, index) => {
+const createTemplate = (contact, index, id) => {
   return `
   <div class="col-12 col-md-4">
-    <div id="contact-${index}" class="card text-white bg-info contact-person" style="max-width: 18rem;">
+    <div id="contact-${id}" class="card text-white bg-info contact-person" style="max-width: 18rem;">
       <div class="card-header">
-        <h5 class="card-title">${contact.name}</h5>          
+        <h5 class="card-title">${contact.name}
+        <button type="button" id="button-close" class="close" aria-label="Close" onClick="deleteContact(${id})">
+        <span aria-hidden="true">&times;</span>
+        </button>
+        </h5>
       </div>
       <div class="card-body">
-        <p class="card-text"><b>Phone Number</b>: ${contact.phoneNumber}</p>
+        <p class="card-text"><b>Phone Number</b>: ${contact.phone_number}</p>
         <p class="card-text"><b>Email</b>: ${contact.email}</p>
         <p class="card-text"><b>Address</b>: ${contact.address}</p>
       </div>
@@ -76,8 +84,10 @@ const createTemplate = (contact, index) => {
   `;
 };
 
-// Show data retrieved from JSON file
+// Get data from database
 const showContact = () => {
+  loadingScreen.show();
+
   fetch(API_URL, {
     method: 'GET',
     mode: 'cors',
@@ -90,44 +100,82 @@ const showContact = () => {
     .then(data => {
       dataPeopleField.html('');
 
-      data.contacts.forEach((contact, index) => {
-        const card = createTemplate(contact, index);
+      data.data.contact.forEach((contact, index) => {
+        const id = data.data.contact[index].id;
 
+        const card = createTemplate(contact, index, id);
         dataPeopleField.append(card);
       });
+
+      loadingScreen.hide();
     });
 };
 
-// Search contact stored in JSON file
 const searchContact = () => {
   const keyword = $('#search-keyword').val();
   const keywordLowercase = keyword.toLowerCase();
 
-  fetch(`http://localhost:3000/contacts/search?q=${keyword}`, {
-    method: 'GET',
+  loadingScreen.show();
+
+  fetch(
+    `https://connecc-api.herokuapp.com/contacts/search/?q=${keywordLowercase}`,
+    {
+      method: 'GET',
+      mode: 'cors',
+      cache: 'no-cache',
+      credentials: 'same-origin',
+      redirect: 'follow',
+      referrer: 'no-referrer'
+    }
+  )
+    .then(response => response.json())
+    .then(data => {
+      console.log(data);
+      dataPeopleField.html('');
+
+      data.contact.forEach((contact, index) => {
+        const id = data.contact[index].id;
+
+        const card = createTemplate(contact, index, id);
+        dataPeopleField.append(card);
+      });
+      loadingScreen.hide();
+    });
+};
+
+const deleteContact = id => {
+  loadingScreen.show();
+
+  fetch(`https://connecc-api.herokuapp.com/contacts/${id}`, {
+    method: 'DELETE',
     mode: 'cors',
     cache: 'no-cache',
     credentials: 'same-origin',
     redirect: 'follow',
     referrer: 'no-referrer'
-  })
-    .then(response => response.json())
-    .then(data => {
-      dataPeopleField.html('');
+  }).then(
+    fetch(API_URL, {
+      method: 'GET',
+      mode: 'cors',
+      cache: 'no-cache',
+      credentials: 'same-origin',
+      redirect: 'follow',
+      referrer: 'no-referrer'
+    })
+      .then(response => response.json())
+      .then(data => {
+        dataPeopleField.html('');
 
-      data.contacts.forEach((contact, index) => {
-        const found =
-          contact.name.toLowerCase().indexOf(keywordLowercase) !== -1 ||
-          contact.phoneNumber.toLowerCase().indexOf(keywordLowercase) !== -1 ||
-          contact.email.toLowerCase().indexOf(keywordLowercase) !== -1 ||
-          contact.address.toLowerCase().indexOf(keywordLowercase) !== -1;
+        data.data.contact.forEach((contact, index) => {
+          const id = data.data.contact[index].id;
 
-        if (found) {
-          const card = createTemplate(contact, index);
+          const card = createTemplate(contact, index, id);
           dataPeopleField.append(card);
-        }
-      });
-    });
+        });
+
+        loadingScreen.hide();
+      })
+  );
 };
 
 // Validate if field empty
@@ -184,7 +232,10 @@ window.addEventListener('load', function() {
     searchContact();
   });
 
-  searchKeyword.on('input', function() {
+  buttonSearch.on('click', function(event) {
+    event.preventDefault();
     searchContact();
   });
+
+  loadingScreen.hide();
 });

@@ -1,46 +1,52 @@
 body {
-    background-color: rgb(1, 174, 251);
-    font-family: "Montserrat", sans-serif;
+  background-color: rgb(1, 174, 251);
+  font-family: 'Montserrat', sans-serif;
 }
 
 .navbar {
-    background-color: rgb(52, 65, 94);
+  background-color: rgb(52, 65, 94);
 }
 
 span {
-    color: white;
+  color: white;
 }
 
 .card {
-    margin-top: 80px;
-    height: 520px;
+  margin-top: 80px;
+  height: 520px;
 }
 
 .display-hidden {
-    display: none;
+  display: none;
 }
 
 .contact-person {
-    height: 300px;
+  height: 300px;
 }
 
 .data-people-field {
-    max-height: 400px;
-    overflow-x: auto;
+  max-height: 400px;
+  overflow-x: auto;
 }
 
 .data-people-field::-webkit-scrollbar {
-    width: 10px;
+  width: 10px;
 }
 
 .data-people-field::-webkit-scrollbar-track {
-    background: #f1f1f1;
+  background: #f1f1f1;
 }
 
 .data-people-field::-webkit-scrollbar-thumb {
-    background: #888;
+  background: #888;
 }
 
 .data-people-field::-webkit-scrollbar-thumb:hover {
-    background: #555;
+  background: #555;
+}
+
+.button-close {
+  width: 10px;
+  height: 10px;
+  background: none;
 }
