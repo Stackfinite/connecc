@@ -9,6 +9,7 @@
     <link rel="shortcut icon" href="images/connecc-logo16x16.png" type="image/x-icon">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/animate.min.css">
+    <link rel="stylesheet" href="css/animation-loading.css">
     <link rel="stylesheet" href="css/index.css">
 </head>
 
@@ -16,7 +17,8 @@
 
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
         <span class="navbar-brand">Connecc</span>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse"
+            aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
@@ -32,6 +34,7 @@
             </ul>
             <form id="search-form" class="form-inline mt-2 mt-md-0">
                 <input id="search-keyword" class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+                <button id="button-search" class="btn btn-outline-info" type="submit">Search</button>
             </form>
         </div>
     </nav>
@@ -48,6 +51,7 @@
                     </li>
                 </ul>
             </div>
+
             <div class="card-body">
                 <div id="card-content-wrapper">
                     <h2 class="card-title">Contact</h2>
@@ -73,9 +77,20 @@
                     </form>
                 </div>
 
+
                 <div id="data-people-field" class="display-hidden data-people-field card-deck row">
                     <!-- PEOPLE DATA -->
                 </div>
+
+                <!-- Loading Screen -->
+                <div id="loading">
+                    <ul class="bokeh">
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                    </ul>
+                </div>
+
             </div>
         </div>
     </div>
