@@ -194,6 +194,7 @@ window.addEventListener('load', function() {
     navAddContactState.removeClass('active');
     navShowContactState.addClass('active');
     cardContentWrapper.addClass('display-hidden');
+    cardContentWrapper.addClass('animated fadeIn')
     dataPeopleField.removeClass('display-hidden');
     showContact();
   });
