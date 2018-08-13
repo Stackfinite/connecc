@@ -8,6 +8,7 @@ const navAddContactState = $('#nav-add-contact-state');
 const navShowContactState = $('#nav-show-contact-state');
 const cardContentWrapper = $('#card-content-wrapper');
 const dataPeopleField = $('#data-people-field');
+const card = $('.card');
 
 // Form field variable
 const name = $('#name');
@@ -89,13 +90,13 @@ const showContact = () => {
   loadingScreen.show();
 
   fetch(API_URL, {
-    method: 'GET',
-    mode: 'cors',
-    cache: 'no-cache',
-    credentials: 'same-origin',
-    redirect: 'follow',
-    referrer: 'no-referrer'
-  })
+      method: 'GET',
+      mode: 'cors',
+      cache: 'no-cache',
+      credentials: 'same-origin',
+      redirect: 'follow',
+      referrer: 'no-referrer'
+    })
     .then(response => response.json())
     .then(data => {
       dataPeopleField.html('');
@@ -118,16 +119,15 @@ const searchContact = () => {
   loadingScreen.show();
 
   fetch(
-    `https://connecc-api.herokuapp.com/contacts/search/?q=${keywordLowercase}`,
-    {
-      method: 'GET',
-      mode: 'cors',
-      cache: 'no-cache',
-      credentials: 'same-origin',
-      redirect: 'follow',
-      referrer: 'no-referrer'
-    }
-  )
+      `https://connecc-api.herokuapp.com/contacts/search/?q=${keywordLowercase}`, {
+        method: 'GET',
+        mode: 'cors',
+        cache: 'no-cache',
+        credentials: 'same-origin',
+        redirect: 'follow',
+        referrer: 'no-referrer'
+      }
+    )
     .then(response => response.json())
     .then(data => {
       console.log(data);
@@ -162,19 +162,19 @@ const deleteContact = id => {
       redirect: 'follow',
       referrer: 'no-referrer'
     })
-      .then(response => response.json())
-      .then(data => {
-        dataPeopleField.html('');
+    .then(response => response.json())
+    .then(data => {
+      dataPeopleField.html('');
 
-        data.data.contact.forEach((contact, index) => {
-          const id = data.data.contact[index].id;
+      data.data.contact.forEach((contact, index) => {
+        const id = data.data.contact[index].id;
 
-          const card = createTemplate(contact, index, id);
-          dataPeopleField.append(card);
-        });
+        const card = createTemplate(contact, index, id);
+        dataPeopleField.append(card);
+      });
 
-        loadingScreen.hide();
-      })
+      loadingScreen.hide();
+    })
   );
 };
 
@@ -196,25 +196,28 @@ const validate = () => {
 
 // @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 // Event listener
-window.addEventListener('load', function() {
-  navAbout.on('click', function() {
+window.addEventListener('load', function () {
+  navAbout.on('click', function () {
     navHome.removeClass('active');
     navAbout.addClass('active');
+    card.addClass('animated fadeOut')
+    searchForm.addClass('animated fadeOut')
   });
 
-  navHome.on('click', function() {
+  navHome.on('click', function () {
     navHome.addClass('active');
     navAbout.removeClass('active');
   });
 
-  navAddContactState.on('click', function() {
+  navAddContactState.on('click', function () {
     navAddContactState.addClass('active');
     navShowContactState.removeClass('active');
     cardContentWrapper.removeClass('display-hidden');
+    cardContentWrapper.addClass('animated fadeIn')
     dataPeopleField.addClass('display-hidden');
   });
 
-  navShowContactState.on('click', function() {
+  navShowContactState.on('click', function () {
     navAddContactState.removeClass('active');
     navShowContactState.addClass('active');
     cardContentWrapper.addClass('display-hidden');
@@ -222,17 +225,17 @@ window.addEventListener('load', function() {
     showContact();
   });
 
-  formAdd.on('submit', function(event) {
+  formAdd.on('submit', function (event) {
     event.preventDefault();
     validate();
   });
 
-  searchForm.on('submit', function(event) {
+  searchForm.on('submit', function (event) {
     event.preventDefault();
     searchContact();
   });
 
-  buttonSearch.on('click', function(event) {
+  buttonSearch.on('click', function (event) {
     event.preventDefault();
     searchContact();
   });
