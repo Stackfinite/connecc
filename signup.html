@@ -65,35 +65,26 @@
             <div class="card-body">
                 <div id="card-content-wrapper">
                     <h2 class="card-title">Sign up Now</h2>
-                    <form id="form-add">
+                    <form id="signup-form">
                         <div class="form-group">
                             <label>Name</label>
-                            <input type="text" class="form-control" id="name" maxlength="30" placeholder="Place your Name Here">
+                            <input type="text" class="form-control" id="signup-username" maxlength="30" placeholder="Place your Name Here">
                         </div>
                         <div class="form-group">
                             <label>Email</label>
-                            <input type="text" class="form-control" id="email" maxlength="30" placeholder="This Will be Your Login Email">
+                            <input type="text" class="form-control" id="signup-email" maxlength="30" placeholder="This Will be Your Login Email">
                         </div>
                         <div class="form-group">
                             <label>Password</label>
-                            <input type="password" class="form-control" id="password" maxlength="40" placeholder="Type Your Password">
+                            <input type="password" class="form-control" id="signup-password" maxlength="40" placeholder="Type Your Password">
                         </div>
-                        <input type="submit" id="button-submit" class="btn btn-primary" value="Sign me Up!">
+                        <input type="submit" id="button-signup" class="btn btn-primary" value="Sign me Up!">
                     </form>
                 </div>
 
 
                 <div id="data-people-field" class="display-hidden data-people-field card-deck row">
                     <!-- PEOPLE DATA -->
-                </div>
-
-                <!-- Loading Screen -->
-                <div id="loading">
-                    <ul class="bokeh">
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                    </ul>
                 </div>
 
             </div>
@@ -103,7 +94,8 @@
     <script src="js/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.26.9/dist/sweetalert2.all.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
-    <script src="js/index.js"></script>
+    <script src="./bower_components/axios/dist/axios.min.js"></script>
+    <script src="js/signup.js"></script>
 </body>
 
 </html>
