@@ -1,5 +1,6 @@
 body {
-  background-color: rgb(1, 174, 251);
+  /* background-color: rgb(1, 174, 251); */
+  background: linear-gradient(to right, #00bbff, #12e6ff);
   font-family: "Montserrat", sans-serif;
 }
 
@@ -11,20 +12,19 @@ span {
   color: white;
 }
 
-.what {
-  text-align: center;
-  padding-top: 100px;
+.card-alignment {
+  display: flex;
+  justify-content: space-around;
 }
-
-.card-alignment
-  {
-    display: flex;
-    justify-content: space-around;
-  }
 
 .card {
   margin-top: 80px;
   height: 520px;
+}
+
+.login {
+  color: white;    
+  margin-right: 15px;
 }
 
 .display-hidden {

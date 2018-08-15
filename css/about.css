@@ -1,5 +1,7 @@
 body {
-  background-color: rgb(1, 174, 251);
+  /* background-color: rgb(1, 174, 251); */
+    background: linear-gradient(to right, #00BBFF, #12E6FF );
+  
   font-family: "Montserrat", sans-serif;
 }
 
@@ -26,6 +28,7 @@ span {
   /* justify-items: center; */
   font-family: "Space Mono", cursive;
   width: 1200px;
+  margin-top: -13px;
   margin-left: 174px; 
 }
 
