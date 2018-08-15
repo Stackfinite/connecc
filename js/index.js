@@ -100,8 +100,8 @@ const showContact = () => {
     .then(data => {
       dataPeopleField.html('');
 
-      data.data.contact.forEach((contact, index) => {
-        const id = data.data.contact[index].id;
+      data.contacts.forEach((contact, index) => {
+        const id = data.contacts[index].id;
 
         const card = createTemplate(contact, id);
         dataPeopleField.append(card);
@@ -194,7 +194,7 @@ window.addEventListener('load', function() {
     navAddContactState.removeClass('active');
     navShowContactState.addClass('active');
     cardContentWrapper.addClass('display-hidden');
-    cardContentWrapper.addClass('animated fadeIn')
+    cardContentWrapper.addClass('animated fadeIn');
     dataPeopleField.removeClass('display-hidden');
     showContact();
   });
