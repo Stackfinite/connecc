@@ -1,11 +1,8 @@
 body {
-  /* background-color: rgb(1, 174, 251); */
-    background: linear-gradient(to right, #00BBFF, #12E6FF );
-  
+  background: linear-gradient(to right, #00bbff, #12e6ff);
   font-family: "Montserrat", sans-serif;
 }
 
-/* @import url('https://fonts.googleapis.com/css?family=Comfortaa|Space+Mono'); */
 .navbar {
   background-color: rgb(52, 65, 94);
 }
@@ -16,7 +13,7 @@ span {
 
 .meetourteam {
   text-align: center;
-  padding-top: 80px;
+  padding-top: 83px;
   color: white;
   font-family: "Abril Fatface", cursive;
   font-size: 7em;
@@ -25,15 +22,14 @@ span {
 .card-alignment {
   display: flex;
   justify-content: space-around;
-  /* justify-items: center; */
   font-family: "Space Mono", cursive;
   width: 1200px;
-  margin-top: -13px;
-  margin-left: 174px; 
+  margin-top: -12px;
+  margin-left: 11%;
 }
 
 .container-image {
-  height: 30%;
+  height: 150px;
   padding-bottom: 20px;
   padding-top: 8px;
 }
