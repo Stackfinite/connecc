@@ -1,0 +1,78 @@
+body {
+  /* background-color: rgb(1, 174, 251); */
+  background: linear-gradient(to right, #00bbff, #12e6ff);
+  font-family: "Montserrat", sans-serif;
+}
+
+.navbar {
+  background-color: rgb(52, 65, 94);
+}
+
+.signup {
+  text-align: center;
+}
+
+span {
+  color: white;
+}
+
+
+
+.card-alignment {
+  display: flex;
+  justify-content: space-around;
+}
+
+.form-control {
+  width: 300px;
+  margin-left: 380px;
+  margin-bottom: 20px;
+  text-align: center;
+  font-size: 10px;
+}
+
+.card {
+  margin-top: 80px;
+  height: 520px;
+  text-align: center;
+}
+
+.login {
+  color: white;    
+  margin-right: 15px;
+}
+
+.display-hidden {
+  display: none;
+}
+
+.contact-person {
+  height: 300px;
+}
+
+.data-people-field {
+  max-height: 400px;
+  overflow-x: auto;
+}
+
+.data-people-field::-webkit-scrollbar {
+  width: 10px;
+}
+
+.data-people-field::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.data-people-field::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+.data-people-field::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+.button-close {
+  width: 10px;
+  height: 10px;
+  background: none;
+}
