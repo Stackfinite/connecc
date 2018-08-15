@@ -3,6 +3,7 @@ body {
   font-family: "Montserrat", sans-serif;
 }
 
+/* @import url('https://fonts.googleapis.com/css?family=Comfortaa|Space+Mono'); */
 .navbar {
   background-color: rgb(52, 65, 94);
 }
@@ -11,20 +12,33 @@ span {
   color: white;
 }
 
-.what {
+.meetourteam {
   text-align: center;
-  padding-top: 100px;
+  padding-top: 80px;
+  color: white;
+  font-family: "Abril Fatface", cursive;
+  font-size: 7em;
 }
 
-.card-alignment
-  {
-    display: flex;
-    justify-content: space-around;
-  }
+.card-alignment {
+  display: flex;
+  justify-content: space-around;
+  /* justify-items: center; */
+  font-family: "Space Mono", cursive;
+  width: 1200px;
+  margin-left: 174px; 
+}
+
+.container-image {
+  height: 30%;
+  padding-bottom: 20px;
+  padding-top: 8px;
+}
 
 .card {
-  margin-top: 80px;
-  height: 520px;
+  margin-top: 53px;
+  height: 300px;
+  text-align: center;
 }
 
 .display-hidden {
