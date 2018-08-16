@@ -114,8 +114,6 @@ const searchContacts = () => {
   fetch(`${API_URL}/search/?q=${keywordLowercase}`)
     .then(response => response.json())
     .then(data => {
-      console.log(data);
-
       showContacts(data);
       loadingScreen.hide();
     });
