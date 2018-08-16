@@ -25,7 +25,7 @@ const loadingScreen = $("#loading");
 
 // TODO: Use API_URL in each fetch function
 //const API_URL = 'https://connecc-api.herokuapp.com/contacts/';
-const API_URL = "http://localhost:3000/contacts";
+const API_URL = "https://connecc-api.herokuapp.com/contacts";
 
 // @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 // Function definition
@@ -95,8 +95,9 @@ const showContact = () => {
 
       data.contacts.forEach((contact, index) => {
         const { id } = contact;
-        const card = createTemplate(contact, index, id);
+        const card = createTemplate(contact, id);
         dataPeopleField.append(card);
+        
       });
 
       loadingScreen.hide();
