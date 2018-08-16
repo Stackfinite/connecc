@@ -4,8 +4,7 @@
   "description": "Connecc",
   "main": "index.html",
   "scripts": {
-    "start": "live-server",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "live-server"
   },
   "repository": {
     "type": "git",
