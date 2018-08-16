@@ -24,7 +24,6 @@ const buttonClose = $("#button-close");
 const loadingScreen = $("#loading");
 
 // TODO: Use API_URL in each fetch function
-//const API_URL = 'https://connecc-api.herokuapp.com/contacts/';
 const API_URL = "https://connecc-api.herokuapp.com/contacts";
 
 // @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
@@ -52,7 +51,6 @@ const addContact = () => {
     referrer: "no-referrer",
     body: JSON.stringify(contacts)
   });
-  
 };
 
 // Clear all textbox
@@ -83,29 +81,30 @@ const createTemplate = (contact, id) => {
   </div>
   `;
 };
+// ShowContacts
+const showContacts = (data) => {
+  data.contacts.forEach(contact => {
+    const { id } = contact;
+    const card = createTemplate(contact, id);
+    dataPeopleField.append(card);
+  });
+};
 
 // Get data from database
-const showContact = () => {
+const getContacts = () => {
   loadingScreen.show();
 
   fetch(API_URL)
     .then(response => response.json())
     .then(data => {
+      dataPeopleField.html("");
 
-      dataPeopleField.html('');
-
-      data.contacts.forEach((contact, index) => {
-        const id = data.contacts[index].id;
-        const card = createTemplate(contact, id);
-        dataPeopleField.append(card);
-        
-      });
-
+      showContacts(data);
       loadingScreen.hide();
     });
 };
 
-const searchContact = () => {
+const searchContacts = () => {
   const keyword = $("#search-keyword").val();
   const keywordLowercase = keyword.toLowerCase();
 
@@ -117,12 +116,7 @@ const searchContact = () => {
       console.log(data);
       dataPeopleField.html("");
 
-      data.contacts.forEach((contact, index) => {
-        const {id} = contact;
-
-        const card = createTemplate(contact, id);
-        dataPeopleField.append(card);
-      });
+      showContacts(data)
       loadingScreen.hide();
     });
 };
@@ -137,12 +131,7 @@ const deleteContact = id => {
       .then(data => {
         dataPeopleField.html("");
 
-        data.contacts.forEach((contact, index) => {
-          const { id } = contact;
-          const card = createTemplate(contact, index, id);
-          dataPeopleField.append(card);
-        });
-
+        showContacts(data)
         loadingScreen.hide();
       });
   });
@@ -187,13 +176,13 @@ window.addEventListener("load", function() {
     dataPeopleField.addClass("display-hidden");
   });
 
-  navShowContactState.on('click', function() {
-    navAddContactState.removeClass('active');
-    navShowContactState.addClass('active');
-    cardContentWrapper.addClass('display-hidden');
-    cardContentWrapper.addClass('animated fadeIn');
-    dataPeopleField.removeClass('display-hidden');
-    showContact();
+  navShowContactState.on("click", function() {
+    navAddContactState.removeClass("active");
+    navShowContactState.addClass("active");
+    cardContentWrapper.addClass("display-hidden");
+    cardContentWrapper.addClass("animated fadeIn");
+    dataPeopleField.removeClass("display-hidden");
+    getContacts();
   });
 
   formAdd.on("submit", function(event) {
