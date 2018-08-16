@@ -24,7 +24,6 @@ const buttonClose = $("#button-close");
 const loadingScreen = $("#loading");
 
 // TODO: Use API_URL in each fetch function
-//const API_URL = 'https://connecc-api.herokuapp.com/contacts/';
 const API_URL = "https://connecc-api.herokuapp.com/contacts";
 
 // @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
@@ -52,7 +51,6 @@ const addContact = () => {
     referrer: "no-referrer",
     body: JSON.stringify(contacts)
   });
-  
 };
 
 // Clear all textbox
@@ -83,42 +81,30 @@ const createTemplate = (contact, id) => {
   </div>
   `;
 };
+// ShowContacts
+const showContacts = (data) => {
+  data.contacts.forEach(contact => {
+    const { id } = contact;
+    const card = createTemplate(contact, id);
+    dataPeopleField.append(card);
+  });
+};
 
 // Get data from database
-const showContact = () => {
+const getContacts = () => {
   loadingScreen.show();
 
   fetch(API_URL)
     .then(response => response.json())
     .then(data => {
-<<<<<<< HEAD
-<<<<<<< HEAD
       dataPeopleField.html("");
-=======
-=======
 
->>>>>>> f40cab86ace6198e1815116fb7ebca38ea5a3ab6
-      dataPeopleField.html('');
-
-      data.contacts.forEach((contact, index) => {
-        const id = data.contacts[index].id;
-<<<<<<< HEAD
->>>>>>> cd48da13161a3f20d04fa352610b2bad3afba7bf
-
-      data.contacts.forEach((contact, index) => {
-        const { id } = contact;
-=======
->>>>>>> f40cab86ace6198e1815116fb7ebca38ea5a3ab6
-        const card = createTemplate(contact, id);
-        dataPeopleField.append(card);
-        
-      });
-
+      showContacts(data);
       loadingScreen.hide();
     });
 };
 
-const searchContact = () => {
+const searchContacts = () => {
   const keyword = $("#search-keyword").val();
   const keywordLowercase = keyword.toLowerCase();
 
@@ -130,12 +116,7 @@ const searchContact = () => {
       console.log(data);
       dataPeopleField.html("");
 
-      data.contacts.forEach((contact, index) => {
-        const {id} = contact;
-
-        const card = createTemplate(contact, id);
-        dataPeopleField.append(card);
-      });
+      showContacts(data)
       loadingScreen.hide();
     });
 };
@@ -150,12 +131,7 @@ const deleteContact = id => {
       .then(data => {
         dataPeopleField.html("");
 
-        data.contacts.forEach((contact, index) => {
-          const { id } = contact;
-          const card = createTemplate(contact, index, id);
-          dataPeopleField.append(card);
-        });
-
+        showContacts(data)
         loadingScreen.hide();
       });
   });
@@ -200,27 +176,13 @@ window.addEventListener("load", function() {
     dataPeopleField.addClass("display-hidden");
   });
 
-<<<<<<< HEAD
-<<<<<<< HEAD
   navShowContactState.on("click", function() {
     navAddContactState.removeClass("active");
     navShowContactState.addClass("active");
     cardContentWrapper.addClass("display-hidden");
+    cardContentWrapper.addClass("animated fadeIn");
     dataPeopleField.removeClass("display-hidden");
-=======
-=======
->>>>>>> f40cab86ace6198e1815116fb7ebca38ea5a3ab6
-  navShowContactState.on('click', function() {
-    navAddContactState.removeClass('active');
-    navShowContactState.addClass('active');
-    cardContentWrapper.addClass('display-hidden');
-    cardContentWrapper.addClass('animated fadeIn');
-    dataPeopleField.removeClass('display-hidden');
-<<<<<<< HEAD
->>>>>>> cd48da13161a3f20d04fa352610b2bad3afba7bf
-=======
->>>>>>> f40cab86ace6198e1815116fb7ebca38ea5a3ab6
-    showContact();
+    getContacts();
   });
 
   formAdd.on("submit", function(event) {
