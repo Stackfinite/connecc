@@ -21,5 +21,8 @@
   "homepage": "https://github.com/glintsacademy-1/connecc#readme",
   "devDependencies": {
     "live-server": "^1.2.0"
+  },
+  "dependencies": {
+    "bower": "^1.8.4"
   }
 }
