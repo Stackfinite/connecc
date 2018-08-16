@@ -91,10 +91,11 @@ const showContact = () => {
   fetch(API_URL)
     .then(response => response.json())
     .then(data => {
-      dataPeopleField.html("");
+
+      dataPeopleField.html('');
 
       data.contacts.forEach((contact, index) => {
-        const { id } = contact;
+        const id = data.contacts[index].id;
         const card = createTemplate(contact, id);
         dataPeopleField.append(card);
         
@@ -186,11 +187,12 @@ window.addEventListener("load", function() {
     dataPeopleField.addClass("display-hidden");
   });
 
-  navShowContactState.on("click", function() {
-    navAddContactState.removeClass("active");
-    navShowContactState.addClass("active");
-    cardContentWrapper.addClass("display-hidden");
-    dataPeopleField.removeClass("display-hidden");
+  navShowContactState.on('click', function() {
+    navAddContactState.removeClass('active');
+    navShowContactState.addClass('active');
+    cardContentWrapper.addClass('display-hidden');
+    cardContentWrapper.addClass('animated fadeIn');
+    dataPeopleField.removeClass('display-hidden');
     showContact();
   });
 
