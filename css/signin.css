@@ -8,8 +8,19 @@ body {
   background-color: rgb(52, 65, 94);
 }
 
+.signup {
+  text-align: center;
+}
+
 span {
   color: white;
+}
+
+.card-title {
+  margin-bottom: 28px;
+}
+.card-body {
+
 }
 
 .card-alignment {
@@ -17,9 +28,18 @@ span {
   justify-content: space-around;
 }
 
+.form-control {
+  width: 300px;
+  margin-left: 380px;
+  margin-bottom: 20px;
+  text-align: center;
+  font-size: 10px;
+}
+
 .card {
   margin-top: 80px;
   height: 520px;
+  text-align: center;
 }
 
 .login {

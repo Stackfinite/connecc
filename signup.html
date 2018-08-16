@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Connecc</title>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <link rel="shortcut icon" href="images/connecc-logo16x16.png" type="image/x-icon">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/animate.min.css">
+    <link rel="stylesheet" href="css/animation-loading.css">
+    <link rel="stylesheet" href="css/signup.css">
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <span class="navbar-brand">Connecc</span>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse signup" id="navbarCollapse">
+
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active" id="nav-home">
+                    <a class="nav-link" href="index.html">Home
+
+                    </a>
+                </li>
+
+                <li class="nav-item" id="nav-about">
+                    <a class="nav-link" href="about.html">About</a>
+
+                </li>
+                <li class="nav-item" id="nav-signup">
+                    <a class="nav-link" href="signup.html">Sign up</a>
+
+                </li>
+                <li class="nav-item" id="nav-login">
+                    <a class="nav-link" href="login.html">Login</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="card animated fadeIn">
+            <div class="card-body">
+                <div id="card-content-wrapper">
+                    <h2 class="card-title">Sign up Now</h2>
+                    <form id="signup-form">
+                        <div class="form-group">
+                            <label>Username</label>
+                            <input type="text" class="form-control" id="name" maxlength="30" placeholder="This will">
+                        </div>
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="text" class="form-control" id="signup-email" maxlength="30" placeholder="This Will be Your Login Email">
+                        </div>
+                        <div class="form-group">
+                            <label>Password</label>
+                            <input type="password" class="form-control" id="signup-password" maxlength="40" placeholder="Type Your Password">
+                        </div>
+                        <input type="submit" id="button-signup" class="btn btn-primary" value="Sign me Up!">
+                    </form>
+                </div>
+
+
+                <div id="data-people-field" class="display-hidden data-people-field card-deck row">
+                    <!-- PEOPLE DATA -->
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script src="js/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.26.9/dist/sweetalert2.all.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="./bower_components/axios/dist/axios.min.js"></script>
+    <script src="js/signup.js"></script>
+</body>
+
+</html>
