@@ -16,10 +16,10 @@ const signUp = () => {
   axios
     .post(`${API_URL}/signup`, data)
     .then(response => {
-      swal('Register success!', response.data.message, 'success');
+      swal('Sign up successed!', response.data.message, 'success');
     })
     .catch(error => {
-      swal('Register failed!', response.data.message, 'error');
+      swal('Sign up failed!', response.data.message, 'error');
     });
 };
 
