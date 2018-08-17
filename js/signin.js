@@ -42,7 +42,7 @@ signinForm.on('submit', event => {
   signIn();
 });
 
-signinButton.on('submit', event => {
+signinButton.on('click', event => {
   event.preventDefault();
 
   signIn();
